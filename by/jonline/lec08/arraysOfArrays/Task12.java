@@ -30,7 +30,7 @@ public class Task12 {
 		}
 		sortLineDescend(arr);
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
+			for (int j = 0; j < arr[i].length / 2; j++) {
 				int add;
 				add = arr[i][j];
 				arr [i][j] = arr[i][arr[i].length-1-j];
