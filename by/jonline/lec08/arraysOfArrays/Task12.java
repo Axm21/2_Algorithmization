@@ -1,7 +1,5 @@
 package by.jonline.lec08.arraysOfArrays;
 
-import java.util.Scanner;
-
 public class Task12 {
 
 	public static void main(String[] args) {
