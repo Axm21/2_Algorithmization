@@ -67,9 +67,6 @@ public class Task12 {
 		if (arr == null) {
 			return;
 		}
-		@SuppressWarnings({ "unused", "resource" })
-		Scanner sc = new Scanner(System.in);
-
 		for (int[] i : arr) {
 
 			for (int j : i) {
