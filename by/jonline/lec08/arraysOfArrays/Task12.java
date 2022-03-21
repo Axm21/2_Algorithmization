@@ -6,21 +6,19 @@ public class Task12 {
 
 	public static void main(String[] args) {
 		// Отсортировать строки матрицы по возрастанию и убыванию значений элементов.
-		
+
 		int n;
 		int[][] arr;
-		
+
 		n = 5;
 		arr = new int[n][n];
-		
+
 		initArr(arr);
 		printArr(arr);
 		sortLineAscend(arr);
 		printArr(arr);
 		sortLineDescend(arr);
 		printArr(arr);
-		
-		
 
 	}
 
@@ -30,11 +28,11 @@ public class Task12 {
 		}
 		sortLineDescend(arr);
 		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length/2; j++) {
+			for (int j = 0; j < arr[i].length / 2; j++) {
 				int add;
 				add = arr[i][j];
-				arr [i][j] = arr[i][arr[i].length-1-j];
-				arr[i][arr[i].length-1-j] = add;
+				arr[i][j] = arr[i][arr[i].length - 1 - j];
+				arr[i][arr[i].length - 1 - j] = add;
 			}
 		}
 	}
@@ -43,12 +41,12 @@ public class Task12 {
 		if (arr == null) {
 			return;
 		}
-		
+
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
 				int max;
 				max = arr[i][j];
-				
+
 				for (int k = j; k < arr[i].length; k++) {
 					if (arr[i][k] > max) {
 						max = arr[i][k];
@@ -60,7 +58,7 @@ public class Task12 {
 						arr[i][j] = max;
 					}
 				}
-				
+
 			}
 		}
 	}
@@ -69,12 +67,12 @@ public class Task12 {
 		if (arr == null) {
 			return;
 		}
-		@SuppressWarnings("unused")
-		Scanner sc = new Scanner (System.in);
-		
-		for(int[] i: arr) {
-			
-			for (int j: i) {
+		@SuppressWarnings({ "unused", "resource" })
+		Scanner sc = new Scanner(System.in);
+
+		for (int[] i : arr) {
+
+			for (int j : i) {
 				System.out.printf("%2d ", j);
 			}
 			System.out.println();
@@ -83,7 +81,7 @@ public class Task12 {
 			System.out.print("___");
 		}
 		System.out.println("\n");
-		
+
 	}
 
 	private static void initArr(int[][] arr) {
@@ -91,13 +89,13 @@ public class Task12 {
 			return;
 		}
 		for (int i = 0; i < arr.length; i++) {
-			
+
 			for (int j = 0; j < arr[i].length; j++) {
-				
-				arr[i][j] = (int)(Math.random() * 100);
+
+				arr[i][j] = (int) (Math.random() * 100);
 			}
 		}
-		
+
 	}
 
 }
