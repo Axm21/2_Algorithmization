@@ -60,6 +60,9 @@ public class Task14 {
 	}
 
 	private static void printArr(int[][] arr) {
+		if (arr == null) {
+			return;
+		}
 		for (int[] i : arr) {
 			for (int j : i) {
 				System.out.printf("%2d ", j);
@@ -69,6 +72,9 @@ public class Task14 {
 	}
 
 	private static void initArr(int[][] arr) {
+		if (arr == null) {
+			return;
+		}
 		for (int j = 0; j < arr[0].length; j++) {
 			for (int count = 0; count < j + 1; count++) {
 				Random rand = new Random();
