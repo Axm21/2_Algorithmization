@@ -6,15 +6,19 @@ public class Task12 {
 		// Отсортировать строки матрицы по возрастанию и убыванию значений элементов.
 
 		int n;
+		int m;
 		int[][] arr;
 
-		n = 5;
-		arr = new int[n][n];
+		m = 15;
+		n = 25;
+		arr = new int[m][n];
 
 		initArr(arr);
 		printArr(arr);
+		System.out.println("the rows of the array are sorted in ascending order of the values of the elements");
 		sortLineAscend(arr);
 		printArr(arr);
+		System.out.println("the rows of the array are sorted in descending order of the values of the elements:");
 		sortLineDescend(arr);
 		printArr(arr);
 
