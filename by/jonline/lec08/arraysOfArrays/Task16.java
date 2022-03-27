@@ -21,27 +21,62 @@ public class Task16 {
 
 		initArr(arr);
 		printArr(arr);
+		checkMagicSq(arr);
+
+	}
+
+	private static void checkMagicSq(int[][] arr) {
+		int magicConst;
+		boolean check = true;
+		int diag1Sum = 0;
+		int diag2Sum = 0;
+		
+		magicConst = arr.length * (arr.length * arr[0].length + 1) / 2;
+		
+		for (int i = 0; i < arr.length; i++) {
+		int rowSum = 0;
+		int columnSum = 0;
+			diag1Sum += arr[i][i];
+			diag2Sum += arr[i][arr[i].length - 1 - i];
+			
+			for (int j = 0; j < arr[i].length; j++) {
+
+				rowSum += arr[i][j];
+				columnSum += arr[j][i];
+			}
+			if (rowSum != magicConst || columnSum != magicConst) {
+				check = false;
+			}
+		}
+		if(diag1Sum != magicConst || diag2Sum != magicConst) {
+			check = false;
+		}
+		if (check) {
+			System.out.println("Magic square is OK");
+		} else {
+			System.out.println("Error. This is not magic square");
+		}
 
 	}
 
 	private static int enterLength(String string) {
 		int n;
 		n = enterFromConsole(string);
-		
+
 		while (n < 1 || n == 2) {
-			System.out.printf("Magic square with lateral length '%d' soesn't exist. Try agayn.\n", n);
+			System.out.printf("Magic square with lateral length '%d' doesn't exist. Try agayn.\n", n);
 			n = enterFromConsole(string);
 		}
-		
+
 		return n;
 	}
 
 	private static int enterFromConsole(String string) {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.print(string);
-		while(!sc.hasNextInt()) {
+		while (!sc.hasNextInt()) {
 			sc.next();
 			System.out.print(string);
 		}
@@ -100,11 +135,11 @@ public class Task16 {
 		 * В оставшиеся свободными ячейки верхней строки поместим (произвольным образом)
 		 * числа {2i + 1} и {d – 2j}, где i = 1, 2, …, m – 2, а j = 1, 2, …, m.
 		 */
-		for (int i = 1; i <= m; i++) {
+		for (int i = 1; i <= m-2; i++) {
 			arr[0][i] = 2 * i + 1;
 		}
 		for (int j = 1; j <= m; j++) {// прошлый цикл заполнил половину, поэтому начинаем со второй половины
-			arr[0][m - 1 + j] = d - 2 * j;
+			arr[0][m - 2 + j] = d - 2 * j;
 		}
 		/*
 		 * В оставшиеся свободные клетки левого столбца поместим (произвольным образом)
@@ -133,10 +168,10 @@ public class Task16 {
 		 * числами, комплементарными числам в противоположных ячейках верхней строки
 		 * (левого столбца), то есть дающими в сумме (n2 + 1).
 		 */
-		for (int i = 1; i < arr.length; i++) {
-			arr[i][arr[0].length-1] = d -arr[i][0];
+		for (int i = 1; i < arr.length-1; i++) {
+			arr[i][arr[0].length - 1] = d - arr[i][0];
 		}
-		for (int j = 1; j < arr[0].length; j++) {
+		for (int j = 1; j < arr[0].length-1; j++) {
 			arr[arr.length - 1][j] = d - arr[0][j];
 		}
 
@@ -210,7 +245,7 @@ public class Task16 {
 
 		i = 0;
 		j = arr[0].length / 2;
-		
+
 		for (int k = 1; k <= arr.length * arr[0].length; k++) {
 
 			arr[i][j] = k;
