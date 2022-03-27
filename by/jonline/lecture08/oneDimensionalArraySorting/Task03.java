@@ -13,7 +13,7 @@ public class Task03 {
 
 		int[] arr = { 1, 2, 2, 3, 4, 6, 8, 9 };
 
-		sortArr(arr);
+		selectionSort(arr);
 		printArr(arr);
 
 	}
@@ -26,7 +26,7 @@ public class Task03 {
 		
 	}
 
-	private static void sortArr(int[] arr) {
+	private static void selectionSort(int[] arr) {
 		for (int j = 0; j < arr.length; j++) {
 			int indexMax;
 			int max;

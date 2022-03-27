@@ -13,9 +13,9 @@ public class Task04 {
 		 */
 
 		int replCount;
-		int[] arr = { 9, 8, 20, 7, 6, 15, 5, 4, 3, 2, 18, 1, 0 };
+		int[] arr = { 10, 8, 5, 2, 9, 4, 7, 1, 6, 3 };
 
-		replCount = sortArr(arr);
+		replCount = exchangeSort(arr);
 		
 		printArr(arr);
 		System.out.println("Number of replacement by sorting: " + replCount);
@@ -28,19 +28,24 @@ public class Task04 {
 		System.out.println();
 	}
 
-	private static int sortArr(int[] arr) {
+	private static int exchangeSort(int[] arr) {
 		int count;
-		count = 0;
+		boolean needIteration;
 		
-		for (int j = 0; j < arr.length - 1; j++) {
+		count = 0;
+		needIteration = true;
+		
+		while (needIteration) {
+			needIteration = false;
 			
-			for (int i = 0; i < arr.length - 1; i++) {
+			for (int i = 0; i + 1 < arr.length; i++) {
 				if (arr[i] > arr[i + 1]) {
 					int add;
 					add = arr[i];
 					arr[i] = arr[i + 1];
 					arr[i + 1] = add;
 					count++;
+					needIteration = true;
 				}
 			}
 		}
