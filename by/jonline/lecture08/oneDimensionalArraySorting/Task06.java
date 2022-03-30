@@ -32,7 +32,6 @@ public class Task06 {
 					arr[j] = arr[j-gap];
 				}
 				arr[j] = temp;
-				printArray(arr);
 			}
 		}
 
