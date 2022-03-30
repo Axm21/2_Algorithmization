@@ -19,26 +19,27 @@ public class Task06 {
 
 	private static void shellSort(int[] arr) {
 		// по условию не сортировка шелла, пропишем оба метода
-		int d;
-		
-		d = arr.length/2;
-		
-		while (d > 0) {
-		for (int i = 0; i+d < arr.length; i++) {
-			if (arr[i] > arr[i+d]) {
-				swap(arr, i, i+d);
-				if (d == 1) {
-					i--;
-				}
+
+		for (int gap = arr.length / 2; gap > 0; gap /= 2) {
+			
+			for (int i = gap; i < arr.length; i++) {
+				int temp;
+				int j;
 				
+				temp = arr[i];
+				
+				for (j = i; j >= gap && temp < arr[j-gap]; j -= gap) {
+					arr[j] = arr[j-gap];
+				}
+				arr[j] = temp;
+				printArray(arr);
 			}
 		}
-		d /= 2;
-		}
+
 	}
 
 	private static void printArray(int[] arr) {
-		for (int value: arr) {
+		for (int value : arr) {
 			System.out.print(value + " ");
 		}
 		System.out.println();
@@ -51,17 +52,17 @@ public class Task06 {
 
 		while (needIteration) {
 			needIteration = false;
-			
-			for (int i = 0; i+1 < arr.length; i++) {
-				
+
+			for (int i = 0; i + 1 < arr.length; i++) {
+
 				if (arr[i] <= arr[i + 1]) {
-					
+
 				} else {
 					needIteration = true;
 					swap(arr, i, i + 1);
 					if (i > 0) {
 						i--;
-						
+
 					}
 				}
 			}
