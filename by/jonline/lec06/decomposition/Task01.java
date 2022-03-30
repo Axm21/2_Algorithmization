@@ -1,4 +1,4 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
 
 import java.util.Scanner;
 

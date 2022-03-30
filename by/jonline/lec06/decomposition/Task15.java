@@ -1,62 +1,60 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Task15 {
 
 	public static void main(String[] args) {
-		// Даны натуральные числа K и N. Написать метод (методы) формирования массива A,
-		// элементами которого являются числа, сумма цифр которых равна K и которые не
-		// больше N.
+		// Найти все натуральные n-значные числа, цифры в которых образуют строго
+		// возрастающую последовательность(например, 1234, 5789). Для решения задачи
+		// использовать декомпозицию.
 
-		int N = 560;
-		int K = 20;
-		
-		int [] array;
-		array = new int [0];
+		int n;
+		int firstNum;
 
-		array = initArray(array, K, N);
-		printArray(array);
+		n = enterIntFromConsole("n >> ");
+		firstNum = (int) Math.pow(10, n - 1);
+		number(firstNum);
 
 	}
-	
-	private static int [] initArray (int[] array, int K, int maxNum) {
-		for (int i = 1; i <= maxNum; i++) {
-			if (sumOfDigit(i) == K) {
-				array = addElement(array, i);
+
+	private static void digit(int n) {
+		boolean check = true;
+		for (int i = n; i > 0; i = (int) (i / 10)) {
+			int digit = i % 10;
+			int digitPrev = (i % 100 - digit) / 10;
+
+			if (digit <= digitPrev) {
+				check = false;
 			}
 		}
-		return array;
-	}
-
-	private static void printArray(int[] array) {
-		if (Arrays.equals(array, new int[0]) || array == null) {
-			System.out.println("¯\\_(ツ)_/¯");
-			return;
+		if (check == true) {
+			System.out.println(n);
 		}
-		System.out.print(Arrays.toString(array));
 	}
-		
 
-	private static int  sumOfDigit(int x) {
-		int sum = 0;
+	private static void number(int n) {
 
-		while (x > 0) {
-			sum += x % 10;
-
-			x = (int) (x / 10);
+		for (int i = n; i < (10 * n); i++) {
+			digit (i);
 		}
-		return sum;
+
 	}
-	
-	private static int[] addElement (int[] arr, int n) {
-		int [] newArr = new int[arr.length+1];
-		
-		for (int i=0; i < arr.length;i++) {
-			newArr[i] = arr[i];
+
+	public static int enterIntFromConsole(String message) {
+		int n;
+
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print(message);
+		while (!sc.hasNextInt()) {
+			sc.next();
+			System.out.print(message);
 		}
-		newArr[arr.length] = n;
-		
-		return newArr;
+		n = sc.nextInt();
+
+		return n;
 	}
+
 }

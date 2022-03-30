@@ -1,45 +1,63 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
+
+import java.util.Scanner;
 
 public class Task13 {
 
 	public static void main(String[] args) {
-		// Дано натуральное число N. Написать метод (методы) для формирования массива,
-		// элементами которого являются цифры числа N.
+		// Два простых числа называются "близнецами", если они отличаются друг от друга
+		// на 2 (например 41 и 43). Найти и напечатать все пары близнецов из отрезка
+		// [n,2n], где n - заданное натуральное число больше 2. Для решения задачи
+		// использовать декомпозицию.
 
-		int N = 568867;
+		int n;
 		
-		for (int i = length(N) - 1; i >= 0; i--) {
+		n = enterIntFromConsole("n >> ");
+		while(n <= 2) {
+			n = enterIntFromConsole("n >> ");
+		}
+		
+		numberTwin(n);
 
-			System.out.println(numbersOfDigit(N)[i]);
+	}
+	
+	private static int enterIntFromConsole (String message) {
+		int n;
+		
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner (System.in);
+		
+		System.out.print(message);
+		while (!sc.hasNextInt()) {
+			sc.next();
+			System.out.print(message);
+		}
+		n = sc.nextInt();
+		
+		return n;
+	}
+	
+	private static void numberTwin(int n) {
+		for (int i = n; i <= 2 * n; i++) {
+			int m;
 
+			m = i + 2;
+
+			if (primeNumberCheck(i) == i && primeNumberCheck(m) == m) {
+				System.out.println("number-twins: " +i + " and " + m);
+			}
 		}
 	}
 
-	private static int[] numbersOfDigit(int N) {
-		int digit;
-		int[] numbersOfDigit = new int[length(N)];
-		
-		digit = N;
-
-		for (int i = 0; i < length(N); i++) {
-			int number;
-
-			number = digit % 10;
-
-			numbersOfDigit[i] = number;
-
-			digit = (int) (digit / 10);
-
+	private static int primeNumberCheck(int n) {
+		int i = 2;
+		while (i <= n) {
+			if (n % i == 0)
+				break;
+			i++;
 		}
-		return numbersOfDigit;
-	}
 
-	private static int length(int N) {
-		int length;
-
-		length = String.valueOf(N).length();
-		
-		return length;
+		return i;
 	}
 
 }

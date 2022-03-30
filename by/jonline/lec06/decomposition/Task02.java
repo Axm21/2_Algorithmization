@@ -1,4 +1,4 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
 
 public class Task02 {
 
@@ -12,10 +12,10 @@ public class Task02 {
 		int d;
 		int grComDiv;
 
-		a = 100;
-		b = 160;
+		a = 110;
+		b = 150;
 		c = 160;
-		d = 20;
+		d = 25;
 
 		grComDiv = greatestCommonDivisorOfFour(a, b, c, d);
 

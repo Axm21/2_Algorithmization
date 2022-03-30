@@ -1,75 +1,49 @@
-package by.jonline.lec06.decomposition;
-
-import java.util.Scanner;
+package by.jonline.lec06.decomposition.copy;
 
 public class Task17 {
 
 	public static void main(String[] args) {
-		// Натуральное число, в записи которого n цифр, называется числом Армстронга,
-		// если сумма его цифр, возведённая в степень n, равна самому числу. Найти все
-		// числа Армстронга от 1 до k. Для решения задачи использовать декомпозицию.
+		// Из заданного числа вычли сумму его цифр. Из результата вновь вычли сумму его
+		// цифр и т.д. Сколько таких действий надо произвести, чтобы получился нуль? Для
+		// решения задачи использовать декомпозицию.
 
-		int k;
-
-		k = enterIntFromConsole("k >> ");
-		while (k < 1) {
-			k = enterIntFromConsole("k >> ");
-		}
-
-		armstrongCheck(k);
-	}
-
-	private static void armstrongCheck(int k) {
-
-		System.out.println("Числа Армстронга: ");
-		for (int i = 1; i <= k; i++) {
-
-			if (sumOfDigitsInPower(i) == i) {
-				System.out.println(i);
-			}
-
-		}
-
-	}
-
-	public static int enterIntFromConsole(String message) {
 		int n;
+		
+		n = by.jonline.lec06.decomposition.Task18.enterIntFromConsole("n >> ");
+		
+		counter(n);
 
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
+	}
 
-		System.out.print(message);
+	private static void counter(int n) {
+		int count = 0;
 
-		while (!sc.hasNextInt()) {
-			sc.next();
-			System.out.print(message);
+		while (n > 0) {
+			n = subtractionOfDigitsSum(n);
+			count++;
 		}
-		n = sc.nextInt();
-
-		return n;
+		System.out.println(count);
 	}
 
-	private static int length(int n) {
-		int length;
+	private static int subtractionOfDigitsSum(int n) {
+		int subtr;
 
-		length = String.valueOf(n).length();
+		subtr = n - sumOfDigit(n);
 
-		return length;
-
+		return subtr;
 	}
 
-	private static int sumOfDigitsInPower(int n) {
-		int i = n;
+	private static int sumOfDigit(int n) {
 		int sum = 0;
 
-		while (i > 0) {
+		for (int i = n; i > 0; i = (int) (i / 10)) {
 			int digit;
-			digit = i % 10;
 
-			sum += Math.pow(digit, length(n));
-			
-			i = i / 10;
+			digit = i % 10;
+			sum += digit;
 		}
+
 		return sum;
 	}
+
 }

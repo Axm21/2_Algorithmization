@@ -1,34 +1,45 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
 
 public class Task10 {
 
 	public static void main(String[] args) {
-		// написать метод (методы) для вычисления суммы факториалов всех нечётных чисел
-		// от 1 до 9.
+		// Дано натуральное число N. Написать метод (методы) для формирования массива,
+		// элементами которого являются цифры числа N.
 
-		int n = 1;
-		long sumFactorial = 0;
+		int N = 568867;
+		
+		for (int i = length(N) - 1; i >= 0; i--) {
 
-		while (n <= 9) {
-			
-			sumFactorial += factorialOfEven(n);
-			n+=1;
+			System.out.println(numbersOfDigit(N)[i]);
+
 		}
-		System.out.print("Sum of factorials of even numbers = " + sumFactorial);
-
 	}
 
-	public static int factorialOfEven(int n) {
-		int factorial = 1;
-
-		if (n % 2 != 0) {
-			factorial = 0;
-		}
+	private static int[] numbersOfDigit(int N) {
+		int digit;
+		int[] numbersOfDigit = new int[length(N)];
 		
-		for (int i = 1; i <= n; i++) {
-			factorial *= i;
+		digit = N;
+
+		for (int i = 0; i < length(N); i++) {
+			int number;
+
+			number = digit % 10;
+
+			numbersOfDigit[i] = number;
+
+			digit = (int) (digit / 10);
+
 		}
-		return factorial;
+		return numbersOfDigit;
+	}
+
+	private static int length(int N) {
+		int length;
+
+		length = String.valueOf(N).length();
+		
+		return length;
 	}
 
 }

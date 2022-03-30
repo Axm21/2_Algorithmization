@@ -1,46 +1,35 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
 
 public class Task09 {
 
 	public static void main(String[] args) {
-		// Написать метод (методы), проверяющий, являются ли три числа взаимно простыми.
+		// Даны числа X, Y, Z, T - длины сторон четырёхугольника. Написать метод
+		// (методы) для вычисления его площади, если угол между его сторонами X и Y -
+		// прямой.
+		
+		double X = 3;
+		double Y = 4;
+		double Z = 5;
+		double T = 6;
+		double S;
+		double diagonal;
+		
+		diagonal = Math.sqrt(X*X + Y*Y);
+		
+		S = AreaOfTriangle(X, Y, diagonal) + AreaOfTriangle(Z, T, diagonal);
 
-		int a = 15;
-		int b = 8;
-		int c = 49;
-
-		if (greatestCommonDevisorOfTwo(a, b) == 1 && greatestCommonDevisorOfTwo(b, c) == 1
-				&& greatestCommonDevisorOfTwo(a, c) == 1) {
-			System.out.print("yes");
-		} else
-			System.out.print("no");
-
+		System.out.println("Area = " +S);
+	}
+	
+	public static double AreaOfTriangle(double a, double  b, double c) {
+		
+		double p;
+		double S;
+		
+		p = (a+b+c)/2;
+		S = Math.sqrt(p*(p-a)*(p-b)*(p-c));
+		
+		return S;
 	}
 
-	public static int greatestCommonDevisorOfTwo(int N1, int N2) {
-
-		int GCD = 1;
-		int devisorN1 = 1;
-		int devisorN2 = 1;
-
-		for (int i1 = N1; i1 > 0; i1--) {
-			if (N1 % i1 == 0) {
-				devisorN1 = i1;
-			}
-			for (int i2 = N2; i2 > 0; i2--) {
-				if (N2 % i2 == 0) {
-					devisorN2 = i2;
-				}
-				if (devisorN1 == devisorN2) {
-					GCD = devisorN2;
-					break;
-				}
-			}
-			if (devisorN1 == devisorN2) {
-				break;
-			}
-		}
-		return GCD;
-
-	}
 }

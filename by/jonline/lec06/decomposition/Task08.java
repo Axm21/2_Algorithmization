@@ -1,34 +1,37 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
 
 public class Task08 {
 
 	public static void main(String[] args) {
-		// Составить программу, которая в массиве A[N] находит второе по величине число
-		// (вывести на печать число, которое меньше максимального элемента массива, но
-		// больше всех других элементов)
+		// Задан массив D. Определить следующие суммы: D[1] + D[2] + D[3]; D[3] + D[4] +
+		// D[5]; D[4] + D[5] + D [6]. Пояснение. Составить метод (методы) для вычисления
+		// суммы трёх последовательно расположенных элементов массива от k до m.
 
-		
-		int[] A = new int [] {2, 19, 12, 20 ,18};
-		
-		int secondMax = 0;
-		
-		for (int N: A) {
-			if (N > secondMax && N < max (A)) {
-				secondMax = N;
-			}
-		}
-		System.out.print(secondMax);
-	}
-	
-	public static int max (int [] A){
-		int max = 0;
-		
-		for (int N : A) {
-			if (N > max){
-				max = N;
-			}
-		}
-		return max;
+		int[] D;
+		int sumFrom1To3;
+		int sumFrom3To5;
+		int sumFrom4To6;
+
+		D = new int[] { 10, 11, 12, 13, 14, 15, 16 };
+
+		sumFrom1To3 = sumOf3(D, 1);
+		sumFrom3To5 = sumOf3(D, 3);
+		sumFrom4To6 = sumOf3(D, 4);
+
+		System.out.println("D[1] + D[2] + D[3] = " +sumFrom1To3);
+		System.out.println("D[3] + D[4] + D[5] = " +sumFrom3To5);
+		System.out.println("D[4] + D[5] + D[6] = " +sumFrom4To6);
 	}
 
+	public static int sumOf3(int[] n, int k) {
+		int m;
+		int sum = 0;
+		m = k + 2;
+
+		for (int i = k; i <= m; i++) {
+			sum += n[i];
+
+		}
+		return sum;
+	}
 }

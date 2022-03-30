@@ -1,35 +1,62 @@
-package by.jonline.lec06.decomposition;
+package by.jonline.lec06.decomposition.copy;
+
+import java.util.Arrays;
 
 public class Task12 {
 
 	public static void main(String[] args) {
-		// Даны числа X, Y, Z, T - длины сторон четырёхугольника. Написать метод
-		// (методы) для вычисления его площади, если угол между его сторонами X и Y -
-		// прямой.
-		
-		double X = 3;
-		double Y = 4;
-		double Z = 5;
-		double T = 6;
-		double S;
-		double diagonal;
-		
-		diagonal = Math.sqrt(X*X + Y*Y);
-		
-		S = AreaOfTriangle(X, Y, diagonal) + AreaOfTriangle(Z, T, diagonal);
+		// Даны натуральные числа K и N. Написать метод (методы) формирования массива A,
+		// элементами которого являются числа, сумма цифр которых равна K и которые не
+		// больше N.
 
-		System.out.println("Area = " +S);
+		int N = 560;
+		int K = 20;
+		
+		int [] array;
+		array = new int [0];
+
+		array = initArray(array, K, N);
+		printArray(array);
+
 	}
 	
-	public static double AreaOfTriangle(double a, double  b, double c) {
-		
-		double p;
-		double S;
-		
-		p = (a+b+c)/2;
-		S = Math.sqrt(p*(p-a)*(p-b)*(p-c));
-		
-		return S;
+	private static int [] initArray (int[] array, int K, int maxNum) {
+		for (int i = 1; i <= maxNum; i++) {
+			if (sumOfDigit(i) == K) {
+				array = addElement(array, i);
+			}
+		}
+		return array;
 	}
 
+	private static void printArray(int[] array) {
+		if (Arrays.equals(array, new int[0]) || array == null) {
+			System.out.println("¯\\_(ツ)_/¯");
+			return;
+		}
+		System.out.print(Arrays.toString(array));
+	}
+		
+
+	private static int  sumOfDigit(int x) {
+		int sum = 0;
+
+		while (x > 0) {
+			sum += x % 10;
+
+			x = (int) (x / 10);
+		}
+		return sum;
+	}
+	
+	private static int[] addElement (int[] arr, int n) {
+		int [] newArr = new int[arr.length+1];
+		
+		for (int i=0; i < arr.length;i++) {
+			newArr[i] = arr[i];
+		}
+		newArr[arr.length] = n;
+		
+		return newArr;
+	}
 }
