@@ -2,7 +2,7 @@ package by.jonline.lec06.decomposition;
 
 import java.util.Scanner;
 
-public class Task02 {
+public class Task01 {
 
 	public static void main(String[] args) {
 		// написать метод (методы) для нахождения наибольшего общего делителя и
