@@ -1,6 +1,6 @@
 package by.jonline.lec06.decomposition;
 
-public class Task03 {
+public class Task02 {
 
 	public static void main(String[] args) {
 		// Написать метод (методы) для нахождения наибольшего общего делителя четырёх
